@@ -1,0 +1,7 @@
+{
+ "variants": {
+   "": {
+     "model": "codlymod:block/lilypad1_block"
+   }
+ }
+}

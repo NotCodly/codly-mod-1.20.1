@@ -2,6 +2,8 @@ package net.codly.codlymod;
 
 import com.mojang.logging.LogUtils;
 import net.codly.codlymod.block.ModBlocks;
+import net.codly.codlymod.item.ModCreativeModTabs;
+import net.codly.codlymod.item.ModItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.food.FoodProperties;
@@ -72,6 +74,8 @@ public class CodlyMod {
         BLOCKS.register(modEventBus);
         // Register the Deferred Register to the mod event bus so items get registered
         ITEMS.register(modEventBus);
+        ModCreativeModTabs.register(modEventBus);
+        ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
         // Register the Deferred Register to the mod event bus so tabs get registered
         CREATIVE_MODE_TABS.register(modEventBus);
@@ -102,8 +106,9 @@ public class CodlyMod {
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event)
     {
-        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS)
-            event.accept(EXAMPLE_BLOCK_ITEM);
+        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
+            event.accept(ModItems.CODLY_PICKAXE);
+        }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
